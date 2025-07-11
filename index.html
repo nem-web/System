@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Only System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase SDKs -->
+  <script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+  <!-- Your script -->
+  <script src="env.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Only System</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="auth.html">Login</a></li>
+        <li><a href="admin.html">Admin Panel</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">Actress Gallery</h1>
+    <div id="card-container" class="container"></div>
+  </main>
+
+  <!-- Razorpay -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <!-- Login/Dashboard Switch -->
+  <script>
+    window.onload = () => {
+      const navLinks = document.querySelector(".nav-links");
+
+      function updateNav(user) {
+        const loginItem = Array.from(navLinks.children).find(li =>
+          li.textContent.trim().toLowerCase() === "login"
+        );
+        const dashboardItem = Array.from(navLinks.children).find(li =>
+          li.textContent.trim().toLowerCase() === "dashboard"
+        );
+
+        if (loginItem) navLinks.removeChild(loginItem);
+        if (dashboardItem) navLinks.removeChild(dashboardItem);
+
+        if (user || localStorage.getItem("loginState") === "loggedin") {
+          const dashboardLink = document.createElement("li");
+          dashboardLink.innerHTML = `<a href="dashboard.html">Dashboard</a>`;
+          navLinks.appendChild(dashboardLink);
+        } else {
+          const loginLink = document.createElement("li");
+          loginLink.innerHTML = `<a href="auth.html">Login</a>`;
+          navLinks.appendChild(loginLink);
+        }
+      }
+
+      // Run once for fallback
+      updateNav(null);
+
+      // When Firebase auth loads
+      firebase.auth().onAuthStateChanged(user => {
+        updateNav(user);
+      });
+    };
+  </script>
+
+</body>
+
+</html>

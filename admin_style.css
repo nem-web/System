@@ -1,0 +1,182 @@
+/* General Page Style */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff4081;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background-color: #ff4081;
+  color: white;
+}
+
+/* Page Title */
+.page-title {
+  text-align: center;
+  margin: 30px 0 10px;
+  font-size: 2rem;
+  color: #333;
+}
+
+/* Form Section */
+.form-section {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input Group inside Admin Panel */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Inputs and Buttons */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+}
+
+button {
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #e73370;
+}
+
+/* Card Grid */
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 20px 40px;
+}
+
+/* Card Style (Shared) */
+.card {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-content h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.card-content button {
+  margin-top: 10px;
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.card-content button:hover {
+  background-color: #e73370;
+}
+
+/* Image Hover Swap (Only on Gallery Page) */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s;
+}
+
+.image-container img.second {
+  opacity: 0;
+}
+
+.card:hover .image-container img.first {
+  opacity: 0;
+}
+
+.card:hover .image-container img.second {
+  opacity: 1;
+}

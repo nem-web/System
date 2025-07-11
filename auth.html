@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>User Login | Only System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <script src="env.js"></script>
+  <script defer src="auth.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .auth-container {
+      max-width: 400px;
+      margin: 60px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .auth-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff4081;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #ff4081;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #e73370;
+    }
+
+    .switch {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .switch a {
+      color: #ff4081;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-container">
+    <h2 id="form-title">Sign In</h2>
+
+    <input type="text" id="name" placeholder="Name (only for signup)" style="display: none;">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="submitForm()">Sign In</button>
+
+    <div class="switch">
+      <span id="toggle-text">Don't have an account?</span>
+      <a onclick="toggleMode()">Sign Up</a>
+    </div>
+  </div>
+</body>
+
+</html>
